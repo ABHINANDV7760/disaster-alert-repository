@@ -8,6 +8,14 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def home():
+    return "Disaster Backend is running!"
+    @app.route('/predict', methods=['POST'])
+def predict():
+    # your prediction code
+    return jsonify({"result": "success"})
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads')
@@ -143,4 +151,5 @@ def monthly():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
+
 
